@@ -1,1 +1,949 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>るみなす｜障がい福祉事業所（株式会社ますたーケア）</title>
+  <style>
+    /* ===== リセット & 基本設定 ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Meiryo', sans-serif;
+      background: #fffdf8;
+      color: #4a4035;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; }
+
+    /* ===== カラーパレット ===== */
+    :root {
+      --primary:   #6bab8e;   /* やわらかいグリーン */
+      --primary-l: #e8f5ee;
+      --accent:    #f4a261;   /* 温かみのあるオレンジ */
+      --accent-l:  #fef3e8;
+      --sky:       #7ec8d8;   /* やさしい空色 */
+      --sky-l:     #eaf7fb;
+      --sand:      #f7ede2;   /* ベージュ */
+      --text:      #4a4035;
+      --muted:     #9e8e7e;
+      --white:     #ffffff;
+      --border:    #e5d9cd;
+    }
+
+    /* ===== ナビゲーション ===== */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--white);
+      box-shadow: 0 2px 12px rgba(107,171,142,.15);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 24px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .logo-mark {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--sky) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; color: #fff; font-weight: bold; flex-shrink: 0;
+    }
+    .logo-text { font-size: 1.35rem; font-weight: 700; color: var(--primary); letter-spacing: .05em; }
+    .logo-sub  { font-size: .72rem; color: var(--muted); letter-spacing: .08em; }
+    nav ul { list-style: none; display: flex; gap: 28px; flex-wrap: wrap; }
+    nav a {
+      font-size: .88rem; font-weight: 600; color: var(--text);
+      padding-bottom: 3px;
+      border-bottom: 2px solid transparent;
+      transition: color .2s, border-color .2s;
+    }
+    nav a:hover { color: var(--primary); border-color: var(--primary); }
+
+    /* ===== ヒーロー ===== */
+    .hero {
+      background: linear-gradient(135deg, #e8f5ee 0%, #eaf7fb 50%, #fef3e8 100%);
+      padding: 80px 24px 70px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 340px; height: 340px; border-radius: 50%;
+      background: rgba(107,171,142,.12);
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -80px; left: -80px;
+      width: 420px; height: 420px; border-radius: 50%;
+      background: rgba(126,200,216,.10);
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-block; background: var(--primary); color: #fff;
+      font-size: .8rem; font-weight: 700; letter-spacing: .1em;
+      padding: 5px 16px; border-radius: 99px; margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem); font-weight: 900;
+      line-height: 1.3; color: var(--text);
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--primary); }
+    .hero p {
+      font-size: 1.05rem; color: var(--muted); max-width: 580px;
+      margin: 0 auto 36px;
+    }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 14px 32px; border-radius: 99px;
+      font-size: .95rem; font-weight: 700; transition: transform .18s, box-shadow .18s;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,0,0,.12); }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-outline  { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+
+    /* ===== セクション共通 ===== */
+    section { padding: 72px 24px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .8rem; font-weight: 700; letter-spacing: .14em;
+      color: var(--primary); text-transform: uppercase; margin-bottom: 10px;
+    }
+    .section-label::before {
+      content: ''; display: block; width: 24px; height: 3px;
+      background: var(--primary); border-radius: 2px;
+    }
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800;
+      color: var(--text); margin-bottom: 12px;
+    }
+    .section-desc { color: var(--muted); font-size: .95rem; margin-bottom: 48px; }
+
+    /* ===== 事業所概要 ===== */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px; margin-top: 16px;
+    }
+    .about-card {
+      background: var(--sand); border-radius: 20px;
+      padding: 32px 28px; position: relative; overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .about-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,.08); }
+    .about-card-icon {
+      width: 52px; height: 52px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 18px;
+    }
+    .card-green  .about-card-icon { background: var(--primary-l); }
+    .card-orange .about-card-icon { background: var(--accent-l); }
+    .card-sky    .about-card-icon { background: var(--sky-l); }
+    .about-card h3 { font-size: 1.08rem; font-weight: 800; margin-bottom: 10px; color: var(--text); }
+    .about-card p  { font-size: .9rem; color: var(--muted); line-height: 1.75; }
+
+    /* 理念ブロック */
+    .philosophy {
+      margin-top: 52px;
+      background: linear-gradient(135deg, var(--primary) 0%, #5a9a7e 100%);
+      border-radius: 24px; padding: 48px 40px;
+      text-align: center; color: #fff; position: relative; overflow: hidden;
+    }
+    .philosophy::before {
+      content: '❝'; font-size: 120px; position: absolute;
+      top: -30px; left: 20px; opacity: .12; line-height: 1;
+    }
+    .philosophy h3 { font-size: 1.6rem; font-weight: 900; margin-bottom: 18px; }
+    .philosophy p  { font-size: 1rem; max-width: 640px; margin: 0 auto; opacity: .92; line-height: 1.9; }
+
+    /* サービス表 */
+    .services { margin-top: 52px; }
+    .services h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 24px; color: var(--text); }
+    .service-list {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .service-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: var(--primary-l); border-radius: 14px; padding: 18px 20px;
+    }
+    .service-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--primary); flex-shrink: 0; margin-top: 6px;
+    }
+    .service-item p { font-size: .9rem; color: var(--text); font-weight: 600; }
+    .service-item span { font-size: .8rem; color: var(--muted); display: block; margin-top: 3px; font-weight: 400; }
+
+    /* 基本情報 */
+    .info-table {
+      width: 100%; border-collapse: collapse; margin-top: 52px;
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,.06);
+    }
+    .info-table th {
+      background: var(--primary); color: #fff;
+      padding: 14px 20px; font-size: .9rem; text-align: left;
+      width: 160px; font-weight: 700;
+    }
+    .info-table td {
+      background: var(--white); padding: 14px 20px;
+      font-size: .9rem; color: var(--text);
+      border-bottom: 1px solid var(--border);
+    }
+    .info-table tr:last-child td { border-bottom: none; }
+
+    /* ===== 活動報告 ===== */
+    #blog { background: var(--sand); }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .blog-card {
+      background: var(--white); border-radius: 20px;
+      overflow: hidden; transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,.06);
+    }
+    .blog-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(0,0,0,.1); }
+    .blog-thumb {
+      height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 56px; position: relative;
+    }
+    .thumb-green  { background: linear-gradient(135deg, #e8f5ee, #c8e8d4); }
+    .thumb-orange { background: linear-gradient(135deg, #fef3e8, #fcd9b5); }
+    .thumb-sky    { background: linear-gradient(135deg, #eaf7fb, #b8e6ef); }
+    .thumb-pink   { background: linear-gradient(135deg, #fce4ec, #f8bbd0); }
+    .blog-body { padding: 24px 24px 28px; }
+    .blog-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .blog-date { font-size: .78rem; color: var(--muted); }
+    .blog-tag {
+      font-size: .72rem; font-weight: 700; padding: 3px 10px;
+      border-radius: 99px; letter-spacing: .06em;
+    }
+    .tag-green  { background: var(--primary-l); color: var(--primary); }
+    .tag-orange { background: var(--accent-l);  color: var(--accent); }
+    .tag-sky    { background: var(--sky-l);     color: var(--sky); }
+    .tag-pink   { background: #fce4ec; color: #e91e63; }
+    .blog-title {
+      font-size: 1rem; font-weight: 800; color: var(--text);
+      margin-bottom: 10px; line-height: 1.5;
+    }
+    .blog-excerpt { font-size: .86rem; color: var(--muted); line-height: 1.75; }
+    .blog-more-btn {
+      display: block; text-align: center;
+      margin-top: 44px; color: var(--primary);
+      font-weight: 700; font-size: .95rem;
+      border: 2px solid var(--primary);
+      padding: 14px 48px; border-radius: 99px;
+      transition: background .2s, color .2s;
+      width: fit-content; margin-left: auto; margin-right: auto;
+    }
+    .blog-more-btn:hover { background: var(--primary); color: #fff; }
+
+    /* ===== SNS連携 ===== */
+    #sns { background: var(--white); }
+    .sns-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+    .sns-card {
+      border-radius: 20px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,.07);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .sns-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(0,0,0,.1); }
+    .sns-header {
+      display: flex; align-items: center; gap: 14px;
+      padding: 18px 22px;
+    }
+    .sns-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; color: #fff; flex-shrink: 0;
+    }
+    .sns-icon-x       { background: #000; }
+    .sns-icon-ig      { background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af, #515bd4); }
+    .sns-icon-line    { background: #06c755; }
+    .sns-name  { font-weight: 800; font-size: 1rem; color: var(--text); }
+    .sns-handle{ font-size: .78rem; color: var(--muted); }
+    .sns-feed  {
+      padding: 0 22px 22px;
+      border-top: 1px solid var(--border);
+    }
+    .sns-post  {
+      padding: 14px 0; border-bottom: 1px solid var(--border);
+      font-size: .85rem; color: var(--text); line-height: 1.7;
+    }
+    .sns-post:last-child { border-bottom: none; }
+    .sns-post-date { font-size: .75rem; color: var(--muted); margin-top: 5px; }
+    .sns-link  {
+      display: block; text-align: center; margin-top: 14px;
+      padding: 10px; border-radius: 10px; font-size: .85rem;
+      font-weight: 700; transition: opacity .2s;
+    }
+    .sns-link:hover { opacity: .8; }
+    .link-x    { background: #000; color: #fff; }
+    .link-ig   { background: linear-gradient(135deg, #f58529, #dd2a7b, #515bd4); color: #fff; }
+    .link-line { background: #06c755; color: #fff; }
+
+    /* ===== 地域連携 ===== */
+    #community { background: var(--sky-l); }
+    .community-intro {
+      background: var(--white); border-radius: 20px;
+      padding: 36px 36px; margin-bottom: 40px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.05);
+      display: flex; align-items: flex-start; gap: 24px;
+      flex-wrap: wrap;
+    }
+    .community-intro-icon {
+      width: 64px; height: 64px; border-radius: 18px;
+      background: var(--sky-l); display: flex;
+      align-items: center; justify-content: center;
+      font-size: 30px; flex-shrink: 0;
+    }
+    .community-intro h3 {
+      font-size: 1.15rem; font-weight: 800; margin-bottom: 10px;
+    }
+    .community-intro p { font-size: .9rem; color: var(--muted); line-height: 1.8; }
+    .partner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px; margin-bottom: 40px;
+    }
+    .partner-card {
+      background: var(--white); border-radius: 16px;
+      padding: 24px 22px;
+      box-shadow: 0 4px 14px rgba(0,0,0,.05);
+      transition: transform .2s, box-shadow .2s;
+      border-left: 4px solid var(--sky);
+    }
+    .partner-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,.08); }
+    .partner-card h4 {
+      font-size: .95rem; font-weight: 800; color: var(--text); margin-bottom: 6px;
+    }
+    .partner-card p { font-size: .82rem; color: var(--muted); line-height: 1.7; }
+    .partner-card .partner-type {
+      display: inline-block; font-size: .72rem; font-weight: 700;
+      background: var(--sky-l); color: var(--sky);
+      padding: 3px 10px; border-radius: 99px; margin-bottom: 10px;
+    }
+    .flow-section { margin-top: 16px; }
+    .flow-section h3 {
+      font-size: 1.1rem; font-weight: 800; margin-bottom: 24px; color: var(--text);
+    }
+    .flow-steps {
+      display: flex; gap: 0; flex-wrap: wrap;
+      background: var(--white); border-radius: 20px;
+      overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,.05);
+    }
+    .flow-step {
+      flex: 1; min-width: 160px; padding: 28px 22px;
+      position: relative; text-align: center;
+    }
+    .flow-step::after {
+      content: '→'; position: absolute; right: -12px; top: 50%;
+      transform: translateY(-50%); font-size: 1.4rem;
+      color: var(--sky); z-index: 1;
+    }
+    .flow-step:last-child::after { display: none; }
+    .flow-num {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--sky); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: .95rem; margin: 0 auto 12px;
+    }
+    .flow-step h4 { font-size: .9rem; font-weight: 800; color: var(--text); margin-bottom: 6px; }
+    .flow-step p  { font-size: .78rem; color: var(--muted); line-height: 1.6; }
+
+    /* ===== お問い合わせ ===== */
+    #contact {
+      background: linear-gradient(135deg, var(--primary) 0%, #5a9a7e 100%);
+      color: #fff; text-align: center; padding: 80px 24px;
+    }
+    #contact .section-label { color: rgba(255,255,255,.8); }
+    #contact .section-label::before { background: rgba(255,255,255,.7); }
+    #contact .section-title { color: #fff; margin-bottom: 14px; }
+    #contact .section-desc { color: rgba(255,255,255,.85); margin-bottom: 40px; }
+    .contact-box {
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 24px; padding: 40px 32px;
+      max-width: 680px; margin: 0 auto;
+      backdrop-filter: blur(8px);
+    }
+    .contact-info-list {
+      display: flex; flex-wrap: wrap; gap: 28px; justify-content: center;
+      margin-bottom: 32px;
+    }
+    .contact-info-item { text-align: center; }
+    .contact-info-item .ci-label {
+      font-size: .75rem; letter-spacing: .1em; opacity: .75; margin-bottom: 5px;
+    }
+    .contact-info-item .ci-value {
+      font-size: 1.1rem; font-weight: 800;
+    }
+    .btn-contact {
+      background: #fff; color: var(--primary);
+      padding: 16px 48px; border-radius: 99px;
+      font-size: 1rem; font-weight: 800;
+      display: inline-block;
+      transition: transform .18s, box-shadow .18s;
+    }
+    .btn-contact:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.15); }
+
+    /* ===== フッター ===== */
+    footer {
+      background: #3a332c; color: rgba(255,255,255,.7);
+      padding: 48px 24px 28px;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; gap: 40px; flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .footer-brand { flex: 1; min-width: 220px; }
+    .footer-brand .logo-text { color: var(--primary); font-size: 1.2rem; }
+    .footer-brand p {
+      font-size: .84rem; margin-top: 14px; line-height: 1.8;
+      color: rgba(255,255,255,.55);
+    }
+    .footer-links h4 {
+      color: rgba(255,255,255,.9); font-size: .88rem; font-weight: 700;
+      margin-bottom: 14px; letter-spacing: .06em;
+    }
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-links a  { font-size: .84rem; color: rgba(255,255,255,.6); transition: color .2s; }
+    .footer-links a:hover { color: var(--primary); }
+    .footer-bottom {
+      max-width: 1100px; margin: 0 auto;
+      border-top: 1px solid rgba(255,255,255,.1); padding-top: 22px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      font-size: .78rem; color: rgba(255,255,255,.4);
+    }
+
+    /* ===== アクセシビリティ & レスポンシブ ===== */
+    @media (max-width: 680px) {
+      nav ul { gap: 14px; }
+      .philosophy { padding: 36px 24px; }
+      .flow-step::after { display: none; }
+      .contact-box { padding: 28px 20px; }
+      .info-table th { width: 100px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== ヘッダー / ナビゲーション ===== -->
+<header>
+  <div class="nav-inner">
+    <div class="logo">
+      <div class="logo-mark">る</div>
+      <div>
+        <div class="logo-text">るみなす</div>
+        <div class="logo-sub">障がい福祉事業所</div>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#about">事業所概要</a></li>
+        <li><a href="#blog">活動報告</a></li>
+        <li><a href="#sns">SNS</a></li>
+        <li><a href="#community">地域連携</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== ヒーローセクション ===== -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🌟 障がい福祉事業所 るみなす</div>
+    <h1>
+      ひとりひとりの<span>光</span>を、<br>ともに輝かせる場所
+    </h1>
+    <p>
+      るみなすは、障がいのある方が自分らしく生き、地域とつながる喜びを感じられるよう、<br>
+      温かい支援と豊かな活動の場を提供しています。
+    </p>
+    <div class="hero-buttons">
+      <a href="#about" class="btn btn-primary">🏠 事業所を見る</a>
+      <a href="#contact" class="btn btn-outline">📞 お問い合わせ</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 事業所概要 ===== -->
+<section id="about">
+  <div class="section-inner">
+    <span class="section-label">About Us</span>
+    <h2 class="section-title">事業所概要</h2>
+    <p class="section-desc">るみなすのことを、もっと知ってください。</p>
+
+    <div class="about-grid">
+      <div class="about-card card-green">
+        <div class="about-card-icon">🏡</div>
+        <h3>施設について</h3>
+        <p>地域に根ざした温かい雰囲気の事業所です。広いスペースと充実した設備で、利用者の皆さまが安心して過ごせる環境を整えています。バリアフリー設計で、どなたでも安心してご利用いただけます。</p>
+      </div>
+      <div class="about-card card-orange">
+        <div class="about-card-icon">🌱</div>
+        <h3>支援の特徴</h3>
+        <p>個別支援計画に基づき、一人ひとりの目標に合わせた丁寧な支援を行います。経験豊富なスタッフが、生活支援・就労支援・社会参加を総合的にサポートします。</p>
+      </div>
+      <div class="about-card card-sky">
+        <div class="about-card-icon">🤝</div>
+        <h3>地域とのつながり</h3>
+        <p>札幌市清田区を拠点に、医療・相談支援事業所・地域住民との連携を大切にし、利用者の皆さまが地域の一員として自立した生活を送れるよう支援しています。</p>
+      </div>
+    </div>
+
+    <!-- 理念 -->
+    <div class="philosophy">
+      <h3>🌟 私たちの理念</h3>
+      <p>
+        「すべての人が、その人らしく輝ける社会を創る」<br><br>
+        障がいのある方お一人おひとりの個性と可能性を大切にし、
+        本人の意思と希望を尊重しながら、
+        自立した生活と豊かな社会参加を実現するための支援を行います。
+        笑顔あふれる毎日と、輝く未来を、スタッフ一同が全力でサポートします。
+      </p>
+    </div>
+
+    <!-- サービス内容 -->
+    <div class="services">
+      <h3>📋 提供サービス一覧</h3>
+      <div class="service-list">
+        <div class="service-item">
+          <div class="service-dot"></div>
+          <div>
+            <p>居宅介護</p>
+            <span>身体介護・庾浴介証・移動・制作活動等</span>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-dot"></div>
+          <div>
+            <p>重度訪問介護</p>
+            <span>行動障害・行動障害のわずかな方への全時間支援</span>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-dot"></div>
+          <div>
+            <p>移動支援</p>
+            <span>社会参加・就労・医療機関への外出支援</span>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-dot"></div>
+          <div>
+            <p>就労支援</p>
+            <span>就労移行・職場定着支援・職業誓導・職場定治支援</span>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-dot"></div>
+          <div>
+            <p>社会参加活動</p>
+            <span>地域イベント・スポーツ・料理教室・創作活動</span>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-dot"></div>
+          <div>
+            <p>相談支援</p>
+            <span>利用計画作成・行政手続き支援・サービス調整</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 基本情報 -->
+    <table class="info-table">
+      <tr><th>事業所名</th><td>障がい福祉事業所 るみなす</td></tr>
+      <tr><th>運営法人</th><td>株式会社ますたーケア</td></tr>
+      <tr><th>管理者</th><td>川村一真</td></tr>
+      <tr><th>所在地</th><td>〒004-0805 北海道札幌市清田区里塚緑ヶ丘5丁目2番20号-105</td></tr>
+      <tr><th>連絡先</th><td>TEL: 011-887-7166 / FAX: 011-887-7616</td></tr>
+      <tr><th>メール</th><td>nco.luminous.tetuya@gmail.com</td></tr>
+      <tr><th>居宅介護</th><td>指定番号：0110902236</td></tr>
+      <tr><th>重度訪問介護</th><td>指定番号：0110902236</td></tr>
+      <tr><th>移動支援</th><td>事業所番号：0001100960</td></tr>
+      <tr><th>営業日</th><td>月曜日～土曜日（祝日・年末年始を除く）</td></tr>
+      <tr><th>営業時間</th><td>9:00～17:00（サービス内容により当日対応可）</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 活動報告 ===== -->
+<section id="blog">
+  <div class="section-inner">
+    <span class="section-label">Activity Report</span>
+    <h2 class="section-title">活動報告</h2>
+    <p class="section-desc">利用者さんとスタッフの日々のかきらいをお届けします。</p>
+
+    <div class="blog-grid">
+
+      <article class="blog-card">
+        <div class="blog-thumb thumb-green">🌸</div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-date">2026年3月25日</span>
+            <span class="blog-tag tag-green">イベント</span>
+          </div>
+          <h3 class="blog-title">春のお花見遠足で全員笑顔！！</h3>
+          <p class="blog-excerpt">市内の公園にお花見に行ってきました。満開の桜の下、お弁当を食べながら全員で大笑い。天気にも恵まれ、最高の一日となりました。</p>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-thumb thumb-orange">🍳</div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-date">2026年3月18日</span>
+            <span class="blog-tag tag-orange">就労支援</span>
+          </div>
+          <h3 class="blog-title">料理教室大成功！春野菜クッキングを体験</h3>
+          <p class="blog-excerpt">春のハーブと旬の野菜を使った料理教室を開催しました。包丁の使い方からプレゼンテーションまで、就労に役立つスキルを楽しく身につけました。</p>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-thumb thumb-sky">🎨</div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-date">2026年3月10日</span>
+            <span class="blog-tag tag-sky">作品紹介</span>
+          </div>
+          <h3 class="blog-title">作品展に出展しました〜力作ぞろいです！</h3>
+          <p class="blog-excerpt">市の文化センターで開催された障がい者アート展に今年も参加。絵画・陶芸・刺繍など個性豊かな作品が会場を彩りました。多くの方にご覧いただき、利用者さんも大変喜んでいました。</p>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-thumb thumb-pink">🏋️</div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-date">2026年3月3日</span>
+            <span class="blog-tag tag-pink">健康・運動</span>
+          </div>
+          <h3 class="blog-title">ボッチャ大会でチームワーク発揮！</h3>
+          <p class="blog-excerpt">パラスポーツのボッチャ大会を開催しました。赤チームと青チームに分かれての白熱した試合！体を動かしながら協力し合う姿がとても輝いていました。次回大会も楽しみです🏆</p>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-thumb thumb-green">🌱</div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-date">2026年2月24日</span>
+            <span class="blog-tag tag-green">就労支援</span>
+          </div>
+          <h3 class="blog-title">農園作業で春の準備スタート！</h3>
+          <p class="blog-excerpt">事業所の農園で春野菜の種まきを行いました。土の感触を感じながら丁寧に種を植える作業、収穫が今からとても楽しみです。育てた野菜は販売や料理教室で活用する予定です🥕</p>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-thumb thumb-orange">🎉</div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-date">2026年2月14日</span>
+            <span class="blog-tag tag-orange">イベント</span>
+          </div>
+          <h3 class="blog-title">バレンタインチョコ作りイベント開催</h3>
+          <p class="blog-excerpt">チョコレートを溶かし、型に流し込み、トッピングをして…みんなでオリジナルのバレンタインチョコを作りました。大切な家族へのプレゼントとして持ち帰っていただきました💝</p>
+        </div>
+      </article>
+
+    </div>
+
+    <a href="#" class="blog-more-btn">📖 もっと見る</a>
+  </div>
+</section>
+
+<!-- ===== SNS連携 ===== -->
+<section id="sns">
+  <div class="section-inner">
+    <span class="section-label">Social Media</span>
+    <h2 class="section-title">SNS・最新情報</h2>
+    <p class="section-desc">各SNSでも日々の活動や最新情報を発信しています。フォローよろしくお願いします！</p>
+
+    <div class="sns-grid">
+
+      <!-- Twitter/X -->
+      <div class="sns-card">
+        <div class="sns-header">
+          <div class="sns-icon sns-icon-x">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.259 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </div>
+          <div>
+            <div class="sns-name">X（旧Twitter）</div>
+            <div class="sns-handle">@luminous_welfare</div>
+          </div>
+        </div>
+        <div class="sns-feed">
+          <div class="sns-post">
+            🌸 今日は春のお花見遠足でした！桜の下で利用者さん全員の笑顔が最高でした。#るみなす #障がい福祉 #お花見
+            <div class="sns-post-date">2026年3月25日</div>
+          </div>
+          <div class="sns-post">
+            🍳 今月の料理教室は春野菜クッキング！美味しく作れました。作り方は活動報告ブログへ📝 #就労支援 #料理教室
+            <div class="sns-post-date">2026年3月18日</div>
+          </div>
+          <div class="sns-post">
+            🎨 市の文化センターでアート展開催中！利用者さんの素敵な作品をぜひご覧ください（3/10〜3/20）#障がい者アート
+            <div class="sns-post-date">2026年3月10日</div>
+          </div>
+          <a href="https://twitter.com/" target="_blank" class="sns-link link-x">X でフォローする →</a>
+        </div>
+      </div>
+
+      <!-- Instagram -->
+      <div class="sns-card">
+        <div class="sns-header">
+          <div class="sns-icon sns-icon-ig">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </div>
+          <div>
+            <div class="sns-name">Instagram</div>
+            <div class="sns-handle">@luminous_welfare</div>
+          </div>
+        </div>
+        <div class="sns-feed">
+          <div class="sns-post">
+            📸 アート展の様子をフォトレポートでお届け！利用者さんたちの力作、ぜひチェックしてください✨ #るみなす #アート展 #福祉
+            <div class="sns-post-date">2026年3月11日</div>
+          </div>
+          <div class="sns-post">
+            🏋️ ボッチャ大会の熱戦をInstagramストーリーでライブ配信しました！アーカイブは24時間限定で見られます📱 #ボッチャ #パラスポーツ
+            <div class="sns-post-date">2026年3月3日</div>
+          </div>
+          <div class="sns-post">
+            🌱 農園の種まきリール動画を公開しました！土に触れる心地よさ、ぜひ動画でご覧ください🎬 #農業 #就労継続支援
+            <div class="sns-post-date">2026年2月24日</div>
+          </div>
+          <a href="https://www.instagram.com/" target="_blank" class="sns-link link-ig">Instagram でフォローする →</a>
+        </div>
+      </div>
+
+      <!-- LINE -->
+      <div class="sns-card">
+        <div class="sns-header">
+          <div class="sns-icon sns-icon-line">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+          </div>
+          <div>
+            <div class="sns-name">LINE 公式アカウント</div>
+            <div class="sns-handle">るみなす公式</div>
+          </div>
+        </div>
+        <div class="sns-feed">
+          <div class="sns-post">
+            【新着情報】4月からの利用者募集を開始しました！無料体験も随時受付中。まずはお気軽にご連絡ください🌟
+            <div class="sns-post-date">2026年3月20日</div>
+          </div>
+          <div class="sns-post">
+            【イベント案内】4月10日(土)「保護者交流会」を開催します。参加ご希望の方はLINEよりご連絡ください。お待ちしています😊
+            <div class="sns-post-date">2026年3月15日</div>
+          </div>
+          <div class="sns-post">
+            【お知らせ】3月29日（月）は施設内研修のため送迎時間が変更になります。詳しくはスタッフまでご確認ください。
+            <div class="sns-post-date">2026年3月5日</div>
+          </div>
+          <a href="https://line.me/" target="_blank" class="sns-link link-line">LINE で友だち追加 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== 地域連携システム ===== -->
+<section id="community">
+  <div class="section-inner">
+    <span class="section-label">Community Network</span>
+    <h2 class="section-title">地域連携システム</h2>
+    <p class="section-desc">るみなすは地域の様々な機関・団体と連携し、包括的な支援ネットワークを構築しています。</p>
+
+    <div class="community-intro">
+      <div class="community-intro-icon">🌐</div>
+      <div>
+        <h3>地域と共に育む支援ネットワーク</h3>
+        <p>
+          障がいのある方が地域で安心して暮らすためには、一つの事業所だけでなく、地域全体での支援が不可欠です。
+          るみなすは、医療・教育・行政・地域住民など、様々なパートナーとの連携を大切にし、
+          利用者の皆さまとそのご家族が必要な時に必要な支援を受けられる体制を整えています。
+        </p>
+      </div>
+    </div>
+
+    <div class="partner-grid">
+      <div class="partner-card">
+        <span class="partner-type">医療機関</span>
+        <h4>🏥 地域医療機関・病院</h4>
+        <p>かかりつけ医・精神科・リハビリ施設との医療連携。健康管理・受診同行・服薬管理を支援します。</p>
+      </div>
+      <div class="partner-card">
+        <span class="partner-type">行政</span>
+        <h4>🏛️ 市区町村・相談支援センター</h4>
+        <p>市の福祉課・相談支援事業所と連携し、支援計画の作成・サービス調整・申請手続きを支援します。</p>
+      </div>
+      <div class="partner-card">
+        <span class="partner-type">教育</span>
+        <h4>🎓 特別支援学校・学校</h4>
+        <p>卒業後の移行支援のため、特別支援学校と情報共有・連絡会を定期開催しています。</p>
+      </div>
+      <div class="partner-card">
+        <span class="partner-type">就労</span>
+        <h4>💼 ハローワーク・企業</h4>
+        <p>就労移行支援・職場定着支援のため、ハローワークや地域企業とのマッチングを行っています。</p>
+      </div>
+      <div class="partner-card">
+        <span class="partner-type">地域</span>
+        <h4>🏘️ 地域住民・自治会</h4>
+        <p>地域のお祭りや清掃活動への参加を通じ、利用者が地域社会の一員として活躍できる機会を作ります。</p>
+      </div>
+      <div class="partner-card">
+        <span class="partner-type">福祉</span>
+        <h4>🤲 他の福祉事業所</h4>
+        <p>近隣の障がい福祉・介護事業所と情報交換・合同研修を行い、支援の質の向上を図っています。</p>
+      </div>
+      <div class="partner-card">
+        <span class="partner-type">ボランティア</span>
+        <h4>🌟 ボランティア団体</h4>
+        <p>地域のボランティア団体と協力し、イベント支援や趣味活動のサポーターとして活躍いただいています。</p>
+      </div>
+      <div class="partner-card">
+        <span class="partner-type">家族</span>
+        <h4>👨‍👩‍👧 保護者会・家族会</h4>
+        <p>定期的な保護者会・家族交流会を開催。ご家族同士のつながりと情報交換の場を大切にしています。</p>
+      </div>
+    </div>
+
+    <!-- 連携フロー -->
+    <div class="flow-section">
+      <h3>📊 支援連携の流れ</h3>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-num">1</div>
+          <h4>ご相談・ご見学</h4>
+          <p>お気軽にお電話またはメールでご相談ください。施設見学も随時受付中です。</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">2</div>
+          <h4>アセスメント</h4>
+          <p>利用希望者・ご家族と面談を行い、支援ニーズや目標を丁寧に確認します。</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">3</div>
+          <h4>支援計画の作成</h4>
+          <p>相談支援事業所と連携し、個別支援計画（サービス等利用計画）を作成します。</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">4</div>
+          <h4>利用開始・連携</h4>
+          <p>利用開始後も関係機関と連携を継続。定期的に計画を見直しながら支援します。</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">5</div>
+          <h4>地域での自立</h4>
+          <p>地域移行・就労・社会参加など、その人らしい暮らしの実現を目指します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== お問い合わせ ===== -->
+<section id="contact">
+  <span class="section-label">Contact</span>
+  <h2 class="section-title">お問い合わせ</h2>
+  <p class="section-desc">見学・体験利用のご相談など、どうぞお気軽にご連絡ください。</p>
+  <div class="contact-box">
+    <div class="contact-info-list">
+      <div class="contact-info-item">
+        <div class="ci-label">📞 お電話</div>
+        <div class="ci-value">011-887-7166</div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ci-label">📠 FAX</div>
+        <div class="ci-value">011-887-7616</div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ci-label">✉️ メール</div>
+        <div class="ci-value">nco.luminous.tetuya@gmail.com</div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ci-label">🕐 受付時間</div>
+        <div class="ci-value">平日 9:00〜17:00</div>
+      </div>
+    </div>
+    <a href="mailto:nco.luminous.tetuya@gmail.com" class="btn-contact">📧 メールでお問い合わせ</a>
+  </div>
+</section>
+
+<!-- ===== フッター ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">
+        <div class="logo-mark">る</div>
+        <div>
+          <div class="logo-text">るみなす</div>
+          <div class="logo-sub" style="color:rgba(255,255,255,.45)">障がい福祉事業所</div>
+        </div>
+      </div>
+      <p>ひとりひとりの光を、ともに輝かせる場所。<br>株式会社ますたーケア運営<br>札幌市清田区里塚緑ヶ丘5丁目2番20号-105</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>サービス</h4>
+      <ul>
+        <li><a href="#about">居宅介護（指定番号：0110902236）</a></li>
+        <li><a href="#about">重度訪問介護（指定番号：0110902236）</a></li>
+        <li><a href="#about">移動支援（事業所番号：0001100960）</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>サイトメニュー</h4>
+      <ul>
+        <li><a href="#about">事業所概要</a></li>
+        <li><a href="#blog">活動報告</a></li>
+        <li><a href="#sns">SNS・最新情報</a></li>
+        <li><a href="#community">地域連携</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links">
+      <h4>SNS</h4>
+      <ul>
+        <li><a href="https://twitter.com/" target="_blank">🐦 X（旧Twitter）</a></li>
+        <li><a href="https://www.instagram.com/" target="_blank">📸 Instagram</a></li>
+        <li><a href="https://line.me/" target="_blank">💬 LINE 公式</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 障がい福祉事業所 るみなす（株式会社ますたーケア）. All rights reserved.</span>
+    <span>プライバシーポリシー｜サイトマップ</span>
+  </div>
+</footer>
+
+</body>
+</html>
 
