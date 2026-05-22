@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kazmac96-commits.github.io/luminous-welfare/sitemap.xml
