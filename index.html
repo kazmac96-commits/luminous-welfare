@@ -165,7 +165,7 @@
       text-shadow: 0 1px 6px rgba(0,0,0,.25);
     }
 
-    /* ===== フォトストリップ ===== */
+    /* ===== フォえセいセアドセアド ===== */
     .photo-strip {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -277,6 +277,107 @@
     }
     .service-item {
       display: flex; align-items: flex-start; gap: 12px;
+      background: var(--primary-l); border-radius: 14px; padding: 18px 20px;
+    }
+    .service-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--primary); flex-shrink: 0; margin-top: 6px;
+    }
+    .service-item p { font-size: .9rem; color: var(--text); font-weight: 600; }
+    .service-item span { font-size: .8rem; color: var(--muted); display: block; margin-top: 3px; font-weight: 400; }
+
+    /* 基本情報 */
+    .info-table {
+      width: 100%; border-collapse: collapse; margin-top: 52px;
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,.06);
+    }
+    .info-table th {
+      background: var(--primary); color: #fff;
+      padding: 14px 20px; font-size: .9rem; text-align: left;
+      width: 160px; font-weight: 700;
+    }
+    .info-table td {
+      background: var(--white); padding: 14px 20px;
+      font-size: .9rem; color: var(--text);
+      border-bottom: 1px solid var(--border);
+    }
+    .info-table tr:last-child td { border-bottom: none; }
+
+    /* ===== blog言云 ===== */
+    #blog { background: var(--sand); }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .blog-card {
+      background: var(--white); border-radius: 20px;
+      overflow: hidden; transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,.06);
+    }
+    .blog-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(0,0,0,.1); }
+    .blog-thumb {
+      height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 56px; position: relative;
+    }
+    .thumb-green  { background: linear-gradient(135deg, #e8f5ee, #c8e8d4); }
+    .thumb-orange { background: linear-gradient(135deg, #fef3e8, #fcd9b5); }
+    .thumb-sky    { background: linear-gradient(135deg, #eaf7fb, #b8e6ef); }
+    .thumb-pink   { background: linear-gradient(135deg, #fce4ec, #f8bbd0); }
+    .blog-body { padding: 24px 24px 28px; }
+    .blog-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .blog-date { font-size: .78rem; color: var(--muted); }
+    .blog-tag {
+      font-size: .72rem; font-weight: 700; padding: 3px 10px;
+      border-radius: 99px; letter-spacing: .06em;
+    }
+    .tag-green  { background: var(--primary-l); color: var(--primary); }
+    .tag-orange { background: var(--accent-l);  color: var(--accent); }
+    .tag-sky    { background: var(--sky-l);     color: var(--sky); }
+    .tag-pink   { background: #fce4ec; color: #e91e63; }
+    .blog-title {
+      font-size: 1rem; font-weight: 800; color: var(--text);
+      margin-bottom: 10px; line-height: 1.5;
+    }
+    .blog-excerpt { font-size: .86rem; color: var(--muted); line-height: 1.75; }
+    .blog-more-btn {
+      display: block; text-align: center;
+      margin-top: 44px; color: var(--primary);
+      font-weight: 700; font-size: .95rem;
+      border: 2px solid var(--primary);
+      padding: 14px 48px; border-radius: 99px;
+      transition: background .2s, color .2s;
+      width: fit-content; margin-left: auto; margin-right: auto;
+    }
+    .blog-more-btn:hover { background: var(--primary); color: #fff; }
+
+    /* ===== SNS連携 ===== */
+    #sns { background: var(--white); }
+    .sns-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+    .sns-card {
+      border-radius: 20px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,.07);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .sns-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(0,0,0,.1); }
+    .sns-header {
+      display: flex; align-items: center; gap: 14px;
+      padding: 18px 22px;
+    }
+    .sns-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; color: #fff; flex-shrink: 0;
+    }
+    .sns-icon-x      { background: #000; }
+    .sns-icon-ig      { background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af, #515bd4); }
+    .sns-icon-liny: flex; align-items: flex-start; gap: 12px;
       background: var(--primary-l); border-radius: 14px; padding: 18px 20px;
     }
     .service-dot {
@@ -505,6 +606,70 @@
     }
     .btn-contact:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.15); }
 
+    /* ===== お問い合わせフォーム ===== */
+    .contact-form {
+      margin-top: 36px;
+      text-align: left;
+    }
+    .contact-form .form-row {
+      display: flex; gap: 16px; margin-bottom: 16px;
+    }
+    .contact-form .form-group {
+      flex: 1; display: flex; flex-direction: column; gap: 6px;
+    }
+    .contact-form label {
+      font-size: .8rem; font-weight: 700; letter-spacing: .06em;
+      color: rgba(255,255,255,.85);
+    }
+    .contact-form label .required {
+      background: var(--accent); color: #fff;
+      font-size: .68rem; padding: 1px 6px; border-radius: 4px;
+      margin-left: 6px; vertical-align: middle;
+    }
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%; padding: 12px 16px;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.4);
+      border-radius: 10px;
+      color: #fff; font-size: .95rem;
+      font-family: inherit;
+      transition: border-color .2s, background .2s;
+      outline: none;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: rgba(255,255,255,.45);
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus {
+      border-color: rgba(255,255,255,.8);
+      background: rgba(255,255,255,.25);
+    }
+    .contact-form select option { color: #4a4035; background: #fff; }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+    .contact-form .form-submit {
+      text-align: center; margin-top: 24px;
+    }
+    .btn-form-submit {
+      background: #fff; color: var(--primary);
+      padding: 16px 56px; border-radius: 99px;
+      font-size: 1rem; font-weight: 800;
+      border: none; cursor: pointer;
+      transition: transform .18s, box-shadow .18s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+    .form-note {
+      font-size: .78rem; color: rgba(255,255,255,.6);
+      margin-top: 12px; text-align: center;
+    }
+    @media (max-width: 560px) {
+      .contact-form .form-row { flex-direction: column; }
+    }
+
     /* ===== フッター ===== */
     footer {
       background: #3a332c; color: rgba(255,255,255,.7);
@@ -569,7 +734,7 @@
   </div>
 </header>
 
-<!-- ===== ヒーローセクション ===== -->
+<!-- ===== ヒーローセコション ===== -->
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-badge">🌟 障がい福祉事業所 るみなす</div>
@@ -617,8 +782,8 @@
     <div class="about-grid">
       <div class="about-card card-green">
         <div class="about-card-icon">🏡</div>
-        <h3>施�h�について</h3>
-        <p>地域に根ざした温かい雰囲気の事業所です。広いスペースと充実した設備で、利用者の皆さまが安心して過ごせる環境を整えています。バリアフリー設計で、どなたでも安心してご利用いただけます。</p>
+        <h3>施設について</h3>
+        <p>地域に根ざした温かい雰囲気の事業所です。広いスペースと充実した設備で、利用者の皆さまが安心して過ごせる環境を整えています。バリアフリー設計で、どなたても安心してご利用いただけます。</p>
       </div>
       <div class="about-card card-orange">
         <div class="about-card-icon">🌱</div>
@@ -707,7 +872,7 @@
       </tr>
       <tr>
         <th>管理者</th>
-        <td>川杂 一真</td>
+        <td>川村 一真</td>
       </tr>
       <tr>
         <th>所在地</th>
@@ -735,7 +900,7 @@
       </tr>
       <tr>
         <th>実施地域</th>
-        <td>札幌市内全区（中央区・北区・東区・硶石区・豊平区・南区・西区・厚別区・手稲区・清田区）</td>
+        <td>札幌市内全区（中央区・北区・東区・白石区・豊平区・南区・西区・厚別区・手稲区・清田区）</td>
       </tr>
       <tr>
         <th>居宅介護・重度訪問介護<br>指定番号</th>
@@ -834,7 +999,7 @@
         <h3>地域と共に育む支援ネットワーク</h3>
         <p>
           障がいのある方が地域で安心して暮らすためには、一つの事業所だけでなく、地域全体での支援が不可欠です。
-          るみなすは、医療・教育・行政・地域住民など、様々なパートナーとの連携を大切にし、
+          るみなすは、医療・教育・行政・地域住民なな、様々なパートナーとの連携を大切にし、
           利用者の皆さまとそのご家族が必要な時に必要な支援を受けられる体制を整えています。
         </p>
       </div>
@@ -921,27 +1086,68 @@
 <section id="contact">
   <span class="section-label">Contact</span>
   <h2 class="section-title">お問い合わせ</h2>
-  <p class="section-desc">見学・体験利用のご相談など、どうぞお気軽にご連絡ください。</p>
+  <p class="section-desc">見学・体験利用のご相談など、どうぞお気軽にご連絡ください。<br>通常1〜2営業日以内にご返信いたします。</p>
   <div class="contact-box">
     <div class="contact-info-list">
       <div class="contact-info-item">
         <div class="ci-label">📞 お電話</div>
-        <div class="ci-value">011-887-7166</div>
-      </div>
-      <div class="contact-info-item">
-        <div class="ci-label">📠 FAX</div>
-        <div class="ci-value">011-887-7619</div>
+        <div class="ci-value"><a href="tel:0118877166" style="color:inherit">011-887-7166</a></div>
       </div>
       <div class="contact-info-item">
         <div class="ci-label">✉️ メール</div>
-        <div class="ci-value">nco.luminous.tetuya@gmail.com</div>
+        <div class="ci-value" style="font-size:.85rem">nco.luminous.tetuya@gmail.com</div>
       </div>
       <div class="contact-info-item">
         <div class="ci-label">🕐 受付時間</div>
         <div class="ci-value">平日 9:00〜17:00</div>
       </div>
     </div>
-    <a href="mailto:nco.luminous.tetuya@gmail.com" class="btn-contact">📧 メールでお問い合わせ</a>
+
+    <!-- お問い合わせフォーム (Formspree) -->
+    <form class="contact-form" action="https://formspree.io/f/REPLACE_ME" method="POST">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cf-name">お名前<span class="required">必須</span></label>
+          <input type="text" id="cf-name" name="name" placeholder="山田 太郎" required>
+        </div>
+        <div class="form-group">
+          <label for="cf-kana">フリガナ</label>
+          <input type="text" id="cf-kana" name="kana" placeholder="ヤマダ タロウ">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cf-email">メールアドレス<span class="required">必須</span></label>
+          <input type="email" id="cf-email" name="email" placeholder="example@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="cf-tel">電話番号</label>
+          <input type="tel" id="cf-tel" name="tel" placeholder="090-0000-0000">
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom:16px">
+        <label for="cf-type">お問い合わせ種別<span class="required">必須</span></label>
+        <select id="cf-type" name="type" required>
+          <option value="" disabled selected>選択してください</option>
+          <option value="見学・体験利用">見学・体験利用について</option>
+          <option value="居宅介護">居宅介護について</option>
+          <option value="重度訪問介護">重度訪問介護について</option>
+          <option value="移動支援">移動支援について</option>
+          <option value="採用・求人">採用・求人について</option>
+          <option value="その他">その他</option>
+        </select>
+      </div>
+      <div class="form-group" style="margin-bottom:0">
+        <label for="cf-message">お問い合わせ内容<span class="required">必須</span></label>
+        <textarea id="cf-message" name="message" placeholder="ご質問・ご相談（内容と可行ごいういみすていみす。" required></textarea>
+      </div>
+      <input type="hidden" name="_subject" value="【るみなすHP】お問い合わせが届きました">
+      <input type="hidden" name="_next" value="https://kazmac96-commits.github.io/luminous-welfare/?thanks=1">
+      <div class="form-submit">
+        <button type="submit" class="btn-form-submit">📨 送信する</button>
+      </div>
+      <p class="form-note">送信後、自動返信メールをお送りします。届かない場合はお電話でお問い合わせください。</p>
+    </form>
   </div>
 </section>
 
@@ -993,5 +1199,21 @@
   </div>
 </footer>
 
+<script>
+  /* お問い合わせ送信後 thanks=1 でサンクスメッセージ表示 */
+  (function(){
+    const params = new URLSearchParams(location.search);
+    if(params.get('thanks') === '1'){
+      const form = document.querySelector('.contact-form');
+      if(form){
+        form.innerHTML = '<div style="text-align:center;padding:24px 0">'
+          + '<div style="font-size:3rem;margin-bottom:12px">✅</div>'
+          + '<p style="font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:8px">お問い合わせを受け付けました</p>'
+          + '<p style="color:rgba(255,255,255,.85);font-size:.9rem">通常1〜2営業日以内にご返信いたします。<br>自動返信メールをご確認ください。</p>'
+          + '</div>';
+      }
+    }
+  })();
+</script>
 </body>
 </html>
